@@ -4,10 +4,6 @@ abstract class WatchNowEvent {
   const WatchNowEvent();
 }
 
-class UpdateNavigationData extends WatchNowEvent {
-  const UpdateNavigationData();
-}
-
 class GetNowPlaying extends WatchNowEvent {
   final int page;
   final bool loadMore;
