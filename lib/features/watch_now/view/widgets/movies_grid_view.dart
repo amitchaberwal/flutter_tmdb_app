@@ -2,15 +2,16 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:insort_assignment/core/config/app_config.dart';
 import 'package:insort_assignment/core/extensions/controller_extensions.dart';
-import 'package:insort_assignment/features/watch_now/controller/watch_now_state.dart';
+import 'package:insort_assignment/domain/models/movie_model.dart';
 
-class NowPlayingView extends StatelessWidget {
-  final WatchNowState state;
-  const NowPlayingView({super.key, required this.state});
+class MoviesGridView extends StatelessWidget {
+  final bool isLoading;
+  final List<MovieModel> moviesList;
+  const MoviesGridView({super.key, required this.isLoading, required this.moviesList});
 
   @override
   Widget build(BuildContext context) {
-    if(state.isLoading){
+    if(isLoading){
       return Center(
         child: SizedBox(
             height: 50,
@@ -20,7 +21,7 @@ class NowPlayingView extends StatelessWidget {
     }
     else{
       return GridView.builder(
-        itemCount: state.moviesList.length,
+        itemCount: moviesList.length,
         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 3,childAspectRatio: 0.7),
         itemBuilder: (context, index) {
           return Card(
@@ -32,7 +33,7 @@ class NowPlayingView extends StatelessWidget {
                 ClipRRect(
                   borderRadius: BorderRadius.circular(12),
                   child: CachedNetworkImage(
-                    imageUrl: AppConfig().appEnv.imageBaseUrlLite + (state.moviesList[index].backdropPath??""),
+                    imageUrl: AppConfig().appEnv.imageBaseUrlLite + (moviesList[index].backdropPath??""),
                     fit: BoxFit.cover,
                     height: double.infinity,
                     width: double.infinity,
@@ -41,10 +42,10 @@ class NowPlayingView extends StatelessWidget {
                   ),
                 ),
                 Align(
-                    alignment: Alignment.bottomCenter,
+                  alignment: Alignment.bottomCenter,
                     child: Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 10,vertical: 10),
-                      child: Text(state.moviesList[index].title??"", maxLines: 2,style: Theme.of(context).textTheme.titleSmall?.copyWith(fontSize: 12, fontWeight: FontWeight.w500,color: context.appTheme.appColorWhite),),
+                      child: Text(moviesList[index].title??"", maxLines: 2,style: Theme.of(context).textTheme.titleSmall?.copyWith(fontSize: 12, fontWeight: FontWeight.w500,color: context.appTheme.appColorWhite),),
                     ),),
               ],
             ),

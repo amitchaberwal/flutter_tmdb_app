@@ -10,8 +10,7 @@ import 'package:insort_assignment/domain/usecase/get_movies.dart';
 import 'package:insort_assignment/features/watch_now/controller/watch_now_bloc.dart';
 import 'package:insort_assignment/features/watch_now/controller/watch_now_event.dart';
 import 'package:insort_assignment/features/watch_now/controller/watch_now_state.dart';
-import 'package:insort_assignment/features/watch_now/view/widgets/now_playing_view.dart';
-import 'package:insort_assignment/features/watch_now/view/widgets/trending_view.dart';
+import 'package:insort_assignment/features/watch_now/view/widgets/movies_grid_view.dart';
 
 // Project imports:
 
@@ -97,8 +96,8 @@ class _WatchNowUIState extends State<WatchNowUI> with TickerProviderStateMixin{
                   child: TabBarView(
                     controller: tabController,
                     children: [
-                      TrendingView(state: state,),
-                      NowPlayingView(state: state,),
+                      MoviesGridView(isLoading: state.isLoading,moviesList: state.moviesList,),
+                      MoviesGridView(isLoading: state.isLoading,moviesList: state.moviesList,),
                     ],
                   ),
                 ),
