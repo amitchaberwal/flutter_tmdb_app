@@ -7,3 +7,14 @@ abstract class WatchNowEvent {
 class UpdateNavigationData extends WatchNowEvent {
   const UpdateNavigationData();
 }
+
+class GetNowPlaying extends WatchNowEvent {
+  final int page;
+  final bool loadMore;
+  const GetNowPlaying({this.page = 1,this.loadMore = false});
+}
+class GetTrending extends WatchNowEvent {
+  final int page;
+  final bool loadMore;
+  const GetTrending({this.page = 1,this.loadMore = false});
+}

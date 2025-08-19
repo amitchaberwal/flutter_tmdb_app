@@ -27,7 +27,11 @@ class WatchListUI extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<WatchListBloc, WatchListState>(
       builder: (context, state) {
-        return const Scaffold();
+        return  Scaffold(
+          appBar: AppBar(
+            title: Text("WatchList", style: Theme.of(context).textTheme.titleLarge?.copyWith(fontSize: 20,fontWeight: FontWeight.w800),),
+          ),
+        );
       },
     );
   }

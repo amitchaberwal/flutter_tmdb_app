@@ -5,6 +5,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:insort_assignment/core/config/app_config.dart';
 import 'package:insort_assignment/core/config/env_config.dart';
 import 'package:insort_assignment/core/config/route_config.dart';
+import 'package:insort_assignment/core/config/theme_config.dart';
 import 'package:insort_assignment/core/controllers/app_controller_primary/primary_controller.state.dart';
 import 'package:insort_assignment/core/controllers/app_controller_primary/primary_controller_bloc.dart';
 import 'package:insort_assignment/core/controllers/app_controller_primary/primary_controller_events.dart';
@@ -68,6 +69,8 @@ class _MainAppState extends State<MainApp> {
           supportedLocales: const [Locale("en", "IN")],
           debugShowCheckedModeBanner: false,
           title: AppConfig().appEnv.appTitle,
+          theme: DefaultAppTheme.themeData(context),
+          darkTheme: DefaultAppTheme.themeData(context),
           // themeMode: ThemeMode.dark,
           initialRoute: "/",
           routes: appRoutes,

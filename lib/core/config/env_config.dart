@@ -6,12 +6,20 @@ abstract class EnvConfig {
   abstract String appTitle;
   abstract Flavor flavor;
   abstract String apiBaseUrl;
+  abstract String imageBaseUrlLite;
+  abstract String imageBaseUrlFull;
   abstract String accessKey;
 }
 
 class DevEnvironment extends EnvConfig {
   @override
   String apiBaseUrl = "https://api.themoviedb.org/3/";
+
+  @override
+  String imageBaseUrlLite = "https://image.tmdb.org/t/p/w500";
+
+  @override
+  String imageBaseUrlFull = "https://image.tmdb.org/t/p/original";
 
   @override
   String appTitle = "The Movie DB-Dev";
@@ -27,6 +35,12 @@ class DevEnvironment extends EnvConfig {
 class ProdEnvironment extends EnvConfig {
   @override
   String apiBaseUrl = "https://api.themoviedb.org/3/";
+
+  @override
+  String imageBaseUrlLite = "https://image.tmdb.org/t/p/w500";
+
+  @override
+  String imageBaseUrlFull = "https://image.tmdb.org/t/p/original";
 
   @override
   String appTitle = "The Movie DB";

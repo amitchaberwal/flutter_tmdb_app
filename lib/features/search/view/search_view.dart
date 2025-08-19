@@ -27,7 +27,11 @@ class SearchUI extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<SearchBloc, SearchState>(
       builder: (context, state) {
-        return const Scaffold();
+        return  Scaffold(
+          appBar: AppBar(
+            title: Text("Search", style: Theme.of(context).textTheme.titleLarge?.copyWith(fontSize: 20,fontWeight: FontWeight.w800),),
+          ),
+        );
       },
     );
   }

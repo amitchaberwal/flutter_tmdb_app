@@ -8,13 +8,14 @@ import 'package:insort_assignment/features/home/controller/home_event.dart';
 import 'package:insort_assignment/features/home/controller/home_state.dart';
 import 'package:insort_assignment/features/home/model/bottom_bar_item.dart';
 import 'package:insort_assignment/features/search/view/search_view.dart';
+import 'package:insort_assignment/features/watch_now/view/watch_now_view.dart';
 import 'package:insort_assignment/features/watchlist/view/watch_list_view.dart';
 
 // Project imports:
 
 class HomeBloc extends Bloc<HomeEvent, HomeState> {
   List<Widget> homeTiles = [
-    const WatchList(),
+    const WatchNow(),
     const Search(),
     const WatchList(),
   ];
@@ -22,14 +23,17 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
     const BottomBarItemModel(
       name: "Watch",
       icon: Icons.home_outlined,
+      activeIcon: Icons.home,
     ),
     const BottomBarItemModel(
       name: "Search",
       icon: Icons.search,
+      activeIcon: Icons.search_rounded,
     ),
     const BottomBarItemModel(
       name: "Bookmarks",
       icon: Icons.bookmark_border_rounded,
+      activeIcon: Icons.bookmark,
     ),
   ];
   HomeBloc() : super(HomeState.initial()) {

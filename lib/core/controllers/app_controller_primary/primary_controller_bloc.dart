@@ -18,7 +18,7 @@ class PrimaryAppBloc extends Bloc<PrimaryAppEvent, PrimaryAppState> {
     });
 
     on<GetInitialConfiguration>((event, emit) async {
-      AppTheme appTheme = AppLightTheme();
+      AppTheme appTheme = AppDarkTheme();
       add(UpdateAppTheme(theme: appTheme));
     });
   }
