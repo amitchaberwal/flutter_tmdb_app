@@ -3,6 +3,7 @@ import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
 // Package imports:
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:insort_assignment/core/config/route_config.dart';
 import 'package:insort_assignment/core/di/injector.dart';
 import 'package:insort_assignment/core/extensions/controller_extensions.dart';
 import 'package:insort_assignment/core/ui/horizontal_movie_card.dart';
@@ -72,14 +73,18 @@ class _SearchUIState extends State<SearchUI> {
                     decoration: InputDecoration(
                       labelText: "Search Movie",
                       labelStyle: Theme.of(context).textTheme.titleSmall,
-                      suffixIcon: _searchController.text.isNotEmpty?GestureDetector(
-                          onTap: (){
-                            _searchController.clear();
-                            context
-                                .read<SearchBloc>()
-                                .add(GetSearchResult(query: ""));
-                          },
-                          child: Icon(Icons.clear, color: context.appTheme.textColorPrimary),):null,
+                      suffixIcon: _searchController.text.isNotEmpty
+                          ? GestureDetector(
+                              onTap: () {
+                                _searchController.clear();
+                                context
+                                    .read<SearchBloc>()
+                                    .add(GetSearchResult(query: ""));
+                              },
+                              child: Icon(Icons.clear,
+                                  color: context.appTheme.textColorPrimary),
+                            )
+                          : null,
                     ),
                     onChanged: (val) {
                       EasyDebounce.debounce(
@@ -108,7 +113,9 @@ class _SearchUIState extends State<SearchUI> {
                               children: [
                                 Padding(
                                   padding: const EdgeInsets.only(
-                                      top: 10, bottom: 10,),
+                                    top: 10,
+                                    bottom: 10,
+                                  ),
                                   child: Align(
                                     alignment: Alignment.centerLeft,
                                     child: Text(
@@ -117,26 +124,40 @@ class _SearchUIState extends State<SearchUI> {
                                           .textTheme
                                           .titleLarge
                                           ?.copyWith(
-                                              fontSize: 16,
-                                              fontWeight: FontWeight.w400,),
+                                            fontSize: 16,
+                                            fontWeight: FontWeight.w400,
+                                          ),
                                     ),
                                   ),
                                 ),
                                 Expanded(
-                                    child: ListView.builder(
-                                        itemCount: state.moviesList.length,
-                                        itemBuilder: (_, index) {
-                                          return Padding(
-                                            padding: const EdgeInsets.symmetric(
-                                                vertical: 2,),
-                                            child: SizedBox(
-                                              height: 170,
-                                              width: double.infinity,
-                                              child: HorizontalMovieCard(movie: state.moviesList[index], onTap: (movie){
-                                              },),
-                                            ),
-                                          );
-                                        },),),
+                                  child: ListView.builder(
+                                    itemCount: state.moviesList.length,
+                                    itemBuilder: (_, index) {
+                                      return Padding(
+                                        padding: const EdgeInsets.symmetric(
+                                          vertical: 2,
+                                        ),
+                                        child: SizedBox(
+                                          height: 170,
+                                          width: double.infinity,
+                                          child: HorizontalMovieCard(
+                                            movie: state.moviesList[index],
+                                            onTap: (movie) {
+                                              Navigator.pushNamed(
+                                                context,
+                                                RouteNames.movieDetail,
+                                                arguments: {
+                                                  "id": movie.id,
+                                                },
+                                              );
+                                            },
+                                          ),
+                                        ),
+                                      );
+                                    },
+                                  ),
+                                ),
                               ],
                             )
                           : Center(
@@ -148,8 +169,9 @@ class _SearchUIState extends State<SearchUI> {
                                     .textTheme
                                     .titleLarge
                                     ?.copyWith(
-                                        fontSize: 18,
-                                        fontWeight: FontWeight.w500,),
+                                      fontSize: 18,
+                                      fontWeight: FontWeight.w500,
+                                    ),
                               ),
                             ),
                 ),

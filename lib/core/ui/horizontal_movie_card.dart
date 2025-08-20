@@ -25,148 +25,159 @@ class HorizontalMovieCard extends StatelessWidget {
           borderRadius:
           BorderRadius.circular(
             12,),),
-        child: Row(
+        child: Stack(
           children: [
-            ClipRRect(
-              borderRadius:
-              BorderRadius
-                  .circular(12),
-              child:
-              CachedNetworkImage(
-                imageUrl: AppConfig()
-                    .appEnv
-                    .imageBaseUrlLite +
-                    (movie
-                        .posterPath ??
-                        movie
-                            .backdropPath ??
-                        ""),
-                fit: BoxFit.cover,
-                height:
-                double.infinity,
-                width: 120,
-              ),
-            ),
-            Expanded(
-              child: Padding(
-                padding:
-                const EdgeInsets
-                    .symmetric(
-                  horizontal:
-                  10,
-                  vertical: 10,),
-                child: Column(
-                  crossAxisAlignment:
-                  CrossAxisAlignment
-                      .start,
-                  children: [
-                    Text(
-                      movie
-                          .title ??
-                          "",
-                      maxLines: 2,
-                      style: Theme.of(
-                        context,)
-                          .textTheme
-                          .titleSmall
-                          ?.copyWith(
-                        fontSize:
-                        16,
-                        fontWeight:
-                        FontWeight
-                            .w500,
-                        color: context
-                            .appTheme
-                            .textColorPrimary,),
-                    ),
-                    5.hGap,
-                    Row(
+            Row(
+              children: [
+                ClipRRect(
+                  borderRadius:
+                  BorderRadius
+                      .circular(12),
+                  child:
+                  CachedNetworkImage(
+                    imageUrl: AppConfig()
+                        .appEnv
+                        .imageBaseUrlLite +
+                        (movie
+                            .posterPath ??
+                            movie
+                                .backdropPath ??
+                            ""),
+                    fit: BoxFit.cover,
+                    height:
+                    double.infinity,
+                    width: 120,
+                  ),
+                ),
+                Expanded(
+                  child: Padding(
+                    padding:
+                    const EdgeInsets
+                        .symmetric(
+                      horizontal:
+                      10,
+                      vertical: 10,),
+                    child: Column(
+                      crossAxisAlignment:
+                      CrossAxisAlignment
+                          .start,
                       children: [
-                        Text(
-                          "Released On: ",
-                          style: Theme.of(
-                            context,)
-                              .textTheme
-                              .titleSmall
-                              ?.copyWith(
-                            fontSize:
-                            14,
-                            fontWeight:
-                            FontWeight.w400,
-                            color: context.appTheme.textColorSecondary,),
-                        ),
                         Text(
                           movie
-                              .releaseDate ??
-                              "NA",
+                              .title ??
+                              "",
+                          maxLines: 2,
                           style: Theme.of(
                             context,)
                               .textTheme
                               .titleSmall
                               ?.copyWith(
                             fontSize:
-                            14,
+                            16,
                             fontWeight:
-                            FontWeight.w600,
-                            color: context.appTheme.textColorPrimary,),
+                            FontWeight
+                                .w500,
+                            color: context
+                                .appTheme
+                                .textColorPrimary,),
+                        ),
+                        5.hGap,
+                        Row(
+                          children: [
+                            Text(
+                              "Released On: ",
+                              style: Theme.of(
+                                context,)
+                                  .textTheme
+                                  .titleSmall
+                                  ?.copyWith(
+                                fontSize:
+                                14,
+                                fontWeight:
+                                FontWeight.w400,
+                                color: context.appTheme.textColorSecondary,),
+                            ),
+                            Text(
+                              movie
+                                  .releaseDate ??
+                                  "NA",
+                              style: Theme.of(
+                                context,)
+                                  .textTheme
+                                  .titleSmall
+                                  ?.copyWith(
+                                fontSize:
+                                14,
+                                fontWeight:
+                                FontWeight.w600,
+                                color: context.appTheme.textColorPrimary,),
+                            ),
+                          ],
+                        ),
+                        2.hGap,
+                        Row(
+                          children: [
+                            Text(
+                              "Rating: ",
+                              style: Theme.of(
+                                context,)
+                                  .textTheme
+                                  .titleSmall
+                                  ?.copyWith(
+                                fontSize:
+                                14,
+                                fontWeight:
+                                FontWeight.w400,
+                                color: context.appTheme.textColorSecondary,),
+                            ),
+                            Text(
+                              "${movie.voteAverage?.toStringAsFixed(1) ?? "NA"}/10 (${movie.voteCount ?? 0})",
+                              style: Theme.of(
+                                context,)
+                                  .textTheme
+                                  .titleSmall
+                                  ?.copyWith(
+                                fontSize:
+                                14,
+                                fontWeight:
+                                FontWeight.w600,
+                                color: context.appTheme.textColorPrimary,),
+                            ),
+                          ],
+                        ),
+                        5.hGap,
+                        Expanded(
+                          child: Text(
+                            movie
+                                .overview ??
+                                "",
+                            style: Theme.of(
+                              context,)
+                                .textTheme
+                                .titleSmall
+                                ?.copyWith(
+                              fontSize:
+                              12,
+                              fontWeight: FontWeight
+                                  .w400,
+                              color: context
+                                  .appTheme
+                                  .textColorSecondary,),
+                          ),
                         ),
                       ],
                     ),
-                    2.hGap,
-                    Row(
-                      children: [
-                        Text(
-                          "Rating: ",
-                          style: Theme.of(
-                            context,)
-                              .textTheme
-                              .titleSmall
-                              ?.copyWith(
-                            fontSize:
-                            14,
-                            fontWeight:
-                            FontWeight.w400,
-                            color: context.appTheme.textColorSecondary,),
-                        ),
-                        Text(
-                          "${movie.voteAverage?.toStringAsFixed(1) ?? "NA"}/10 (${movie.voteCount ?? 0})",
-                          style: Theme.of(
-                            context,)
-                              .textTheme
-                              .titleSmall
-                              ?.copyWith(
-                            fontSize:
-                            14,
-                            fontWeight:
-                            FontWeight.w600,
-                            color: context.appTheme.textColorPrimary,),
-                        ),
-                      ],
-                    ),
-                    5.hGap,
-                    Expanded(
-                      child: Text(
-                        movie
-                            .overview ??
-                            "",
-                        style: Theme.of(
-                          context,)
-                            .textTheme
-                            .titleSmall
-                            ?.copyWith(
-                          fontSize:
-                          12,
-                          fontWeight: FontWeight
-                              .w400,
-                          color: context
-                              .appTheme
-                              .textColorSecondary,),
-                      ),
-                    ),
-                  ],
+                  ),
                 ),
-              ),
+              ],
             ),
+            if(context.appStatePrimary.moviesList.map((m) => m.id).contains(movie.id))
+              Align(
+                  alignment:Alignment.topRight,
+                  child: Padding(
+                    padding: const EdgeInsets.all(5.0),
+                    child: Icon(Icons.stars_rounded,color: context.appTheme.accentYellow,size: 20,),
+                  )),
           ],
         ),),
     );

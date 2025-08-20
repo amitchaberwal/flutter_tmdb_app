@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:insort_assignment/core/config/route_config.dart';
 import 'package:insort_assignment/core/ui/movie_card_view.dart';
 import 'package:insort_assignment/domain/models/movie_model.dart';
 
@@ -24,6 +25,13 @@ class MoviesGridView extends StatelessWidget {
         itemBuilder: (context, index) {
           return MovieCardView(
               onTap: (movie){
+                Navigator.pushNamed(
+                  context,
+                  RouteNames.movieDetail,
+                  arguments: {
+                    "id": movie.id,
+                  },
+                );
               },
               movie: moviesList[index],);
         },

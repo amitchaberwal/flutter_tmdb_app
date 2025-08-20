@@ -29,7 +29,7 @@ Future initializeMainApp(EnvConfig envConfig) async {
     providers: [
       BlocProvider(
         create: (context) =>
-            PrimaryAppBloc()..add(GetInitialConfiguration(context)),
+            PrimaryAppBloc(di())..add(GetInitialConfiguration(context)),
       ),
     ],
     child: const MainApp(),

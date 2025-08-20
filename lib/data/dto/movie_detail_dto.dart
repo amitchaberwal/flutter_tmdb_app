@@ -1,3 +1,4 @@
+import 'package:insort_assignment/domain/models/movie_model.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'movie_detail_dto.g.dart';
@@ -213,4 +214,19 @@ class SpokenLanguages {
   Map<String, dynamic> toJson() {
     return _$SpokenLanguagesToJson(this);
   }
+}
+
+extension MovieDetailDTOX on MovieDetailDTO {
+  MovieModel toMovieModel() => MovieModel(
+    backdropPath: backdropPath,
+    id: id,
+    originalTitle: originalTitle,
+    overview: overview,
+    popularity: popularity,
+    posterPath: posterPath,
+    releaseDate: releaseDate,
+    title: title,
+    voteAverage: voteAverage,
+    voteCount: voteCount,
+  );
 }

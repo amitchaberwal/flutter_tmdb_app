@@ -13,7 +13,7 @@ MovieDetailDTO _$MovieDetailDTOFromJson(Map<String, dynamic> json) =>
       belongsToCollection: json['belongs_to_collection'] == null
           ? null
           : BelongsToCollection.fromJson(
-              json['belongs_to_collection'] as Map<String, dynamic>,),
+              json['belongs_to_collection'] as Map<String, dynamic>),
       budget: (json['budget'] as num?)?.toInt(),
       genres: (json['genres'] as List<dynamic>?)
           ?.map((e) => Genres.fromJson(e as Map<String, dynamic>))
@@ -88,7 +88,7 @@ BelongsToCollection _$BelongsToCollectionFromJson(Map<String, dynamic> json) =>
     );
 
 Map<String, dynamic> _$BelongsToCollectionToJson(
-        BelongsToCollection instance,) =>
+        BelongsToCollection instance) =>
     <String, dynamic>{
       'id': instance.id,
       'name': instance.name,
@@ -115,7 +115,7 @@ ProductionCompanies _$ProductionCompaniesFromJson(Map<String, dynamic> json) =>
     );
 
 Map<String, dynamic> _$ProductionCompaniesToJson(
-        ProductionCompanies instance,) =>
+        ProductionCompanies instance) =>
     <String, dynamic>{
       'id': instance.id,
       'logo_path': instance.logoPath,
@@ -130,7 +130,7 @@ ProductionCountries _$ProductionCountriesFromJson(Map<String, dynamic> json) =>
     );
 
 Map<String, dynamic> _$ProductionCountriesToJson(
-        ProductionCountries instance,) =>
+        ProductionCountries instance) =>
     <String, dynamic>{
       'iso_3166_1': instance.iso31661,
       'name': instance.name,

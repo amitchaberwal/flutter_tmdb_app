@@ -7,10 +7,10 @@ import 'package:insort_assignment/data/local/movie_dao.dart';
 import 'package:insort_assignment/data/remote/tmdb_remote_repo.dart';
 import 'package:insort_assignment/data/repository/movie_repo_impl.dart';
 import 'package:insort_assignment/domain/repo/movie_repository.dart';
+import 'package:insort_assignment/domain/usecase/bookmarks_usecase.dart';
 import 'package:insort_assignment/domain/usecase/get_movie_details.dart';
 import 'package:insort_assignment/domain/usecase/get_movies.dart';
 import 'package:insort_assignment/domain/usecase/search_movies.dart';
-
 
 final di = GetIt.instance;
 
@@ -29,5 +29,5 @@ Future<void> initDependencies() async {
   di.registerLazySingleton<GetMoviesUseCase>(() => GetMoviesUseCase(di<MovieRepository>()));
   di.registerLazySingleton<GetMovieDetailUseCase>(() => GetMovieDetailUseCase(di<MovieRepository>()));
   di.registerLazySingleton<SearchMoviesUseCase>(() => SearchMoviesUseCase(di<MovieRepository>()));
-
+  di.registerLazySingleton<BookmarkUseCase>(() => BookmarkUseCase(di<MovieRepository>()));
 }

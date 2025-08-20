@@ -3,8 +3,9 @@ import 'package:flutter/material.dart';
 
 // Package imports:
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:insort_assignment/features/watchlist/controller/watch_list_bloc.dart';
-import 'package:insort_assignment/features/watchlist/controller/watch_list_state.dart';
+import 'package:insort_assignment/core/di/injector.dart';
+import 'package:insort_assignment/core/extensions/controller_extensions.dart';
+import 'package:insort_assignment/features/watch_now/view/widgets/movies_grid_view.dart';
 
 // Project imports:
 
@@ -13,10 +14,7 @@ class WatchList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => WatchListBloc(),
-      child: const WatchListUI(),
-    );
+    return WatchListUI();
   }
 }
 
@@ -25,14 +23,13 @@ class WatchListUI extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<WatchListBloc, WatchListState>(
-      builder: (context, state) {
-        return  Scaffold(
-          appBar: AppBar(
-            title: Text("WatchList", style: Theme.of(context).textTheme.titleLarge?.copyWith(fontSize: 20,fontWeight: FontWeight.w800),),
-          ),
-        );
-      },
+    return  Scaffold(
+        appBar: AppBar(
+          title: Text("WatchList", style: Theme.of(context).textTheme.titleLarge?.copyWith(fontSize: 20,fontWeight: FontWeight.w800),),
+        ),
+        body: context.appStatePrimary.moviesList.isEmpty?
+        Center(child: Text("No Movies Saved", style: Theme.of(context).textTheme.titleLarge?.copyWith(fontSize: 20,fontWeight: FontWeight.w500),)):
+        MoviesGridView(moviesList: context.appStatePrimary.moviesList,isLoading: false,)
     );
   }
 }

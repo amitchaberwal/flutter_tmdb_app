@@ -4,6 +4,7 @@
 import 'package:flutter/material.dart';
 import 'package:insort_assignment/core/config/theme_config.dart';
 import 'package:insort_assignment/core/controllers/app_controller_primary/primary_controller.state.dart';
+import 'package:insort_assignment/domain/models/movie_model.dart';
 
 abstract class PrimaryAppEvent {
   const PrimaryAppEvent();
@@ -24,4 +25,12 @@ class UpdateState extends PrimaryAppEvent {
 class UpdateAppTheme extends PrimaryAppEvent {
   final AppTheme theme;
   const UpdateAppTheme({required this.theme});
+}
+
+class GetSavedMovies extends PrimaryAppEvent{
+  const GetSavedMovies();
+}
+class ToggleBookmark extends PrimaryAppEvent{
+  final MovieModel movie;
+  const ToggleBookmark(this.movie);
 }

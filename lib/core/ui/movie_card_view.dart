@@ -22,26 +22,35 @@ class MovieCardView extends StatelessWidget {
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(12),
         ),
-        child: Stack(
-          children: [
-            ClipRRect(
-              borderRadius: BorderRadius.circular(12),
-              child: CachedNetworkImage(
+        child: ClipRRect(
+            borderRadius: BorderRadius.circular(12),
+          child: Stack(
+            children: [
+              CachedNetworkImage(
                 imageUrl: AppConfig().appEnv.imageBaseUrlLite + (movie.backdropPath??""),
                 fit: BoxFit.cover,
                 height: double.infinity,
                 width: double.infinity,
-                color: context.appTheme.appColorDark.withValues(alpha: 0.3),
-                colorBlendMode: BlendMode.srcATop,
               ),
-            ),
-            Align(
-              alignment: Alignment.bottomCenter,
-              child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 10,vertical: 10),
-                child: Text(movie.title??"", maxLines: 2,style: Theme.of(context).textTheme.titleSmall?.copyWith(fontSize: 12, fontWeight: FontWeight.w500,color: context.appTheme.appColorWhite),),
-              ),),
-          ],
+              Align(
+                alignment: Alignment.bottomCenter,
+                child: Container(
+                  width: double.infinity,
+                  color: context.appTheme.appColorDark.withValues(alpha: 0.7),
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 10,vertical: 5),
+                    child: Text(movie.title??"", maxLines: 2,style: Theme.of(context).textTheme.titleSmall?.copyWith(fontSize: 12, fontWeight: FontWeight.w500,color: context.appTheme.appColorWhite),),
+                  ),
+                ),),
+              if(context.appStatePrimary.moviesList.map((m) => m.id).contains(movie.id))
+              Align(
+                  alignment:Alignment.topRight,
+                  child: Padding(
+                    padding: const EdgeInsets.all(5.0),
+                    child: Icon(Icons.stars_rounded,color: context.appTheme.accentYellow,size: 20,),
+                  )),
+            ],
+          ),
         ),
       ),
     );

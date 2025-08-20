@@ -29,6 +29,6 @@ class MovieDao {
   }
 
   Future<List<MovieModel>> getBookmarks() async {
-    return (await database.getDB(dbName: HiveBoxConstants.userBox)).values.toList().map((e)=> MovieModel.fromJson(e)).toList();
+    return (await database.getDB(dbName: HiveBoxConstants.userBox)).values.toList().map((e)=> MovieModel.fromJson((e).cast<String, dynamic>())).toList();
   }
 }
