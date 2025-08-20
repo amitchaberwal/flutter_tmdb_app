@@ -57,7 +57,7 @@ class MovieDetailUI extends StatelessWidget {
                               ShareParams(uri: Uri.parse(url)),
                           );
                         },
-                        child: Icon(Icons.share,size: 25,color: context.appTheme.textColorPrimary,)),
+                        child: Icon(Icons.share,size: 25,color: context.appTheme.textColorPrimary,),),
                   ),
                   Padding(
                     padding: const EdgeInsets.only(right: 10),
@@ -65,9 +65,9 @@ class MovieDetailUI extends StatelessWidget {
                         onTap: (){
                           context.addAppEventPrimary(ToggleBookmark(state.movie!.toMovieModel()));
                         },
-                        child: Icon(context.appStatePrimary.moviesList.map((m) => m.id).contains(state.movie?.id??0)?Icons.bookmark:Icons.bookmark_border_outlined,size: 30,color: context.appTheme.textColorPrimary,)),
-                  )
-                ]
+                        child: Icon(context.appStatePrimary.moviesList.map((m) => m.id).contains(state.movie?.id??0)?Icons.bookmark:Icons.bookmark_border_outlined,size: 30,color: context.appTheme.textColorPrimary,),),
+                  ),
+                ],
 
             ],
           ),
@@ -112,7 +112,7 @@ class MovieDetailUI extends StatelessWidget {
                                           fontSize: 14,
                                           fontWeight: FontWeight.w400,
                                           color: context
-                                              .appTheme.textColorSecondary),
+                                              .appTheme.textColorSecondary,),
                                 );
                               },
                               separatorBuilder: (_, index) {
@@ -123,15 +123,15 @@ class MovieDetailUI extends StatelessWidget {
                                     decoration: BoxDecoration(
                                         shape: BoxShape.circle,
                                         color:
-                                            context.appTheme.textColorSecondary));
+                                            context.appTheme.textColorSecondary,),);
                               },
-                              itemCount: state.movie?.genres?.length ?? 0),
+                              itemCount: state.movie?.genres?.length ?? 0,),
                         ),
                         5.hGap,
                         Text(
                           state.movie?.title ?? "",
                           style: Theme.of(context).textTheme.titleLarge?.copyWith(
-                              fontSize: 20, fontWeight: FontWeight.w500),
+                              fontSize: 20, fontWeight: FontWeight.w500,),
                         ),
                         Row(
                           mainAxisSize: MainAxisSize.min,
@@ -151,7 +151,7 @@ class MovieDetailUI extends StatelessWidget {
                                   ?.copyWith(
                                       fontSize: 14,
                                       fontWeight: FontWeight.w400,
-                                      color: context.appTheme.textColorPrimary),
+                                      color: context.appTheme.textColorPrimary,),
                             ),
                           ],
                         ),
@@ -178,7 +178,7 @@ class MovieDetailUI extends StatelessWidget {
                           style: Theme.of(context).textTheme.titleLarge?.copyWith(
                               fontSize: 14,
                               fontWeight: FontWeight.w400,
-                              color: context.appTheme.textColorSecondary),
+                              color: context.appTheme.textColorSecondary,),
                         ),
                         10.hGap,
                       ],
@@ -204,7 +204,7 @@ class ChipView extends StatelessWidget {
     return Container(
       decoration: BoxDecoration(
           border: Border.all(color: context.appTheme.textColorSecondary),
-          borderRadius: BorderRadius.circular(100)),
+          borderRadius: BorderRadius.circular(100),),
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
         child: Text(

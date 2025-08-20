@@ -26,7 +26,6 @@ class _TMDBRemoteRepo implements TMDBRemoteRepo {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{r'page': page};
     final _headers = <String, dynamic>{};
-    const Map<String, dynamic>? _data = null;
     final _options = _setStreamType<MovieResponse>(Options(
       method: 'GET',
       headers: _headers,
@@ -36,13 +35,12 @@ class _TMDBRemoteRepo implements TMDBRemoteRepo {
           _dio.options,
           '/trending/movie/week',
           queryParameters: queryParameters,
-          data: _data,
         )
         .copyWith(
             baseUrl: _combineBaseUrls(
           _dio.options.baseUrl,
           baseUrl,
-        )));
+        ),),);
     final _result = await _dio.fetch<Map<String, dynamic>>(_options);
     late MovieResponse _value;
     try {
@@ -59,7 +57,6 @@ class _TMDBRemoteRepo implements TMDBRemoteRepo {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{r'page': page};
     final _headers = <String, dynamic>{};
-    const Map<String, dynamic>? _data = null;
     final _options = _setStreamType<MovieResponse>(Options(
       method: 'GET',
       headers: _headers,
@@ -69,13 +66,12 @@ class _TMDBRemoteRepo implements TMDBRemoteRepo {
           _dio.options,
           '/movie/now_playing',
           queryParameters: queryParameters,
-          data: _data,
         )
         .copyWith(
             baseUrl: _combineBaseUrls(
           _dio.options.baseUrl,
           baseUrl,
-        )));
+        ),),);
     final _result = await _dio.fetch<Map<String, dynamic>>(_options);
     late MovieResponse _value;
     try {
@@ -92,7 +88,6 @@ class _TMDBRemoteRepo implements TMDBRemoteRepo {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
-    const Map<String, dynamic>? _data = null;
     final _options = _setStreamType<MovieDetailDTO>(Options(
       method: 'GET',
       headers: _headers,
@@ -102,13 +97,12 @@ class _TMDBRemoteRepo implements TMDBRemoteRepo {
           _dio.options,
           '/movie/${id}',
           queryParameters: queryParameters,
-          data: _data,
         )
         .copyWith(
             baseUrl: _combineBaseUrls(
           _dio.options.baseUrl,
           baseUrl,
-        )));
+        ),),);
     final _result = await _dio.fetch<Map<String, dynamic>>(_options);
     late MovieDetailDTO _value;
     try {
@@ -131,7 +125,6 @@ class _TMDBRemoteRepo implements TMDBRemoteRepo {
       r'page': page,
     };
     final _headers = <String, dynamic>{};
-    const Map<String, dynamic>? _data = null;
     final _options = _setStreamType<MovieResponse>(Options(
       method: 'GET',
       headers: _headers,
@@ -141,13 +134,12 @@ class _TMDBRemoteRepo implements TMDBRemoteRepo {
           _dio.options,
           '/search/movie',
           queryParameters: queryParameters,
-          data: _data,
         )
         .copyWith(
             baseUrl: _combineBaseUrls(
           _dio.options.baseUrl,
           baseUrl,
-        )));
+        ),),);
     final _result = await _dio.fetch<Map<String, dynamic>>(_options);
     late MovieResponse _value;
     try {

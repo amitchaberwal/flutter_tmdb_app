@@ -177,7 +177,7 @@ class HorizontalMovieCard extends StatelessWidget {
                   child: Padding(
                     padding: const EdgeInsets.all(5.0),
                     child: Icon(Icons.stars_rounded,color: context.appTheme.accentYellow,size: 20,),
-                  )),
+                  ),),
           ],
         ),),
     );

@@ -2,8 +2,6 @@
 import 'package:flutter/material.dart';
 
 // Package imports:
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:insort_assignment/core/di/injector.dart';
 import 'package:insort_assignment/core/extensions/controller_extensions.dart';
 import 'package:insort_assignment/features/watch_now/view/widgets/movies_grid_view.dart';
 
@@ -29,7 +27,7 @@ class WatchListUI extends StatelessWidget {
         ),
         body: context.appStatePrimary.moviesList.isEmpty?
         Center(child: Text("No Movies Saved", style: Theme.of(context).textTheme.titleLarge?.copyWith(fontSize: 20,fontWeight: FontWeight.w500),)):
-        MoviesGridView(moviesList: context.appStatePrimary.moviesList,isLoading: false,)
+        MoviesGridView(moviesList: context.appStatePrimary.moviesList,isLoading: false,),
     );
   }
 }

@@ -82,7 +82,7 @@ class _SearchUIState extends State<SearchUI> {
                                     .add(GetSearchResult(query: ""));
                               },
                               child: Icon(Icons.clear,
-                                  color: context.appTheme.textColorPrimary),
+                                  color: context.appTheme.textColorPrimary,),
                             )
                           : null,
                     ),
