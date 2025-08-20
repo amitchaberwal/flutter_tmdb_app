@@ -60,36 +60,45 @@ class _WatchNowUIState extends State<WatchNowUI> with TickerProviderStateMixin{
           ),
           body: Column(
             children: [
-            TabBar(
-            controller: tabController,
-            tabs: const [
-              Tab(
-                text: "Trending",
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 20),
+              child: Container(
+                decoration: BoxDecoration(
+                  color: context.appTheme.backgroundColorPrimary,
+                  borderRadius: BorderRadius.circular(100),
+                ),
+                child: TabBar(
+                controller: tabController,
+                tabs: const [
+                  Tab(
+                    text: "Trending",
+                  ),
+                  Tab(
+                    text: "Now Playing",
+                  ),
+                ],
+                unselectedLabelStyle:
+                Theme.of(context).textTheme.bodyLarge!.copyWith(
+                  color: context.appTheme.textColorPrimary,
+                  fontSize: 16,
+                  fontWeight: FontWeight.w400,
+                ),
+                labelStyle: Theme.of(context)
+                    .textTheme
+                    .bodyLarge!
+                    .copyWith(
+                  color: context.appTheme.backgroundColorPrimary,
+                  fontSize: 16,
+                  fontWeight: FontWeight.w700,
+                ),
+                indicatorSize: TabBarIndicatorSize.tab,
+                dividerHeight: 0,
+                indicator: BoxDecoration(
+                  color: context.appTheme.accentColor,
+                  borderRadius: BorderRadius.circular(100),
+                ),),
               ),
-              Tab(
-                text: "Now Playing",
-              ),
-            ],
-            unselectedLabelStyle:
-            Theme.of(context).textTheme.bodyLarge!.copyWith(
-              color: context.appTheme.textColorPrimary,
-              fontSize: 16,
-              fontWeight: FontWeight.w400,
             ),
-            labelStyle: Theme.of(context)
-                .textTheme
-                .bodyLarge!
-                .copyWith(
-              color: context.appTheme.backgroundColorPrimary,
-              fontSize: 16,
-              fontWeight: FontWeight.w700,
-            ),
-            indicatorSize: TabBarIndicatorSize.tab,
-            dividerHeight: 0,
-            indicator: BoxDecoration(
-              color: context.appTheme.accentColor,
-              borderRadius: BorderRadius.circular(100),
-            ),),
               Expanded(
                 child: Padding(
                   padding: const EdgeInsets.only(top: 10),
