@@ -19,11 +19,15 @@ class MoviesGridView extends StatelessWidget {
       );
     }
     else{
-      return GridView.builder(
-        itemCount: moviesList.length,
-        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 3,childAspectRatio: 0.7),
-        itemBuilder: (context, index) {
-          return MovieCardView(
+      if(moviesList.isEmpty){
+        return Center(child: Text("Movies not available", style: Theme.of(context).textTheme.titleLarge?.copyWith(fontSize: 20,fontWeight: FontWeight.w500),));
+      }
+      else{
+        return GridView.builder(
+          itemCount: moviesList.length,
+          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 3,childAspectRatio: 0.7),
+          itemBuilder: (context, index) {
+            return MovieCardView(
               onTap: (movie){
                 Navigator.pushNamed(
                   context,
@@ -34,8 +38,9 @@ class MoviesGridView extends StatelessWidget {
                 );
               },
               movie: moviesList[index],);
-        },
-      );
+          },
+        );
+      }
     }
   }
 }

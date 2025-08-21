@@ -40,7 +40,14 @@ class MovieRepositoryImpl implements MovieRepository {
 
   @override
   Future<List<MovieModel>> searchMovies(String query) async {
-    return (await remote.search(query)).results;
+    try{
+      return (await remote.search(query)).results;
+    }
+    catch(e){
+      (appNavigatorKey.currentContext??AppConfig().rootContext).showSnackBar(text: "Something went wrong", color:AppConfig().rootContext.appTheme.accentRed );
+      return [];
+    }
+
   }
 
   @override
