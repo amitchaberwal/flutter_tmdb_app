@@ -1,4 +1,2 @@
-// Project imports:
-
 class DataConstants {
 }
