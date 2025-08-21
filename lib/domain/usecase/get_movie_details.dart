@@ -5,7 +5,7 @@ class GetMovieDetailUseCase {
   final MovieRepository repository;
   GetMovieDetailUseCase(this.repository);
 
-  Future<MovieDetailDTO> getDetail(int id) {
+  Future<MovieDetailDTO?> getDetail(int id) {
     return repository.getMovieDetail(id);
   }
 }

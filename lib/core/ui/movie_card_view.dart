@@ -1,7 +1,7 @@
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:insort_assignment/core/config/app_config.dart';
 import 'package:insort_assignment/core/extensions/controller_extensions.dart';
+import 'package:insort_assignment/core/ui/image_view.dart';
 import 'package:insort_assignment/domain/models/movie_model.dart';
 
 class MovieCardView extends StatelessWidget {
@@ -26,9 +26,8 @@ class MovieCardView extends StatelessWidget {
             borderRadius: BorderRadius.circular(12),
           child: Stack(
             children: [
-              CachedNetworkImage(
+              ImageView(
                 imageUrl: AppConfig().appEnv.imageBaseUrlLite + (movie.backdropPath??""),
-                fit: BoxFit.cover,
                 height: double.infinity,
                 width: double.infinity,
               ),

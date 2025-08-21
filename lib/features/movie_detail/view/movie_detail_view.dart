@@ -1,5 +1,4 @@
 // Flutter imports:
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:easy_stars/easy_stars.dart';
 import 'package:flutter/material.dart';
 // Package imports:
@@ -9,6 +8,7 @@ import 'package:insort_assignment/core/controllers/app_controller_primary/primar
 import 'package:insort_assignment/core/di/injector.dart';
 import 'package:insort_assignment/core/extensions/controller_extensions.dart';
 import 'package:insort_assignment/core/extensions/widget_extension.dart';
+import 'package:insort_assignment/core/ui/image_view.dart';
 import 'package:insort_assignment/data/dto/movie_detail_dto.dart';
 import 'package:insort_assignment/features/movie_detail/controller/movie_detail_bloc.dart';
 import 'package:insort_assignment/features/movie_detail/controller/movie_detail_event.dart';
@@ -79,7 +79,21 @@ class MovieDetailUI extends StatelessWidget {
                     child: CircularProgressIndicator(),
                   ),
                 )
-              : Padding(
+              : (state.movie == null) ?
+          Center(
+            child: Text(
+              "Movie Details can't be loaded",
+              style: Theme.of(context)
+                  .textTheme
+                  .titleLarge
+                  ?.copyWith(
+                fontSize: 16,
+                fontWeight: FontWeight.w400,
+                color: context
+                    .appTheme.accentRed,),
+            ),
+          )
+              :Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 15),
                 child: SingleChildScrollView(
                     child: Column(
@@ -88,10 +102,9 @@ class MovieDetailUI extends StatelessWidget {
                         if ((state.movie?.posterPath ?? "").isNotEmpty)
                           ClipRRect(
                             borderRadius: BorderRadius.circular(12),
-                            child: CachedNetworkImage(
+                            child: ImageView(
                               imageUrl: AppConfig().appEnv.imageBaseUrlFull +
                                   (state.movie?.posterPath ?? ""),
-                              fit: BoxFit.cover,
                               height: 400,
                               width: double.infinity,
                             ),

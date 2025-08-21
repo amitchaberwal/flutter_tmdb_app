@@ -51,6 +51,7 @@ dependencies:
   path_provider:
   pretty_dio_logger:
   easy_stars: ^1.0.9
+  shimmer:
 
 dev_dependencies:
   flutter_test:

@@ -9,14 +9,17 @@ class MovieDao {
     required this.database,
   });
 
-  Future<void> saveMovies(List<MovieModel> movies) async {
+  Future<void> saveMovies(String movieType,List<MovieModel> movies,) async {
+    Map<String, dynamic> savedMovies = (await database.readData(dbName: HiveBoxConstants.moviesBox,key: movieType,defaultValue: {}));
     for (var movie in movies) {
-      await database.writeData(dbName: HiveBoxConstants.moviesBox, key: movie.id.toString(), data: movie.toJson());
+      savedMovies[movie.id.toString()] = movie.toJson();
     }
+    await database.writeData(dbName: HiveBoxConstants.moviesBox, key: movieType, data: savedMovies);
   }
 
-  Future<List<MovieModel>> getSavedMovies() async {
-    return (await database.getDB(dbName: HiveBoxConstants.moviesBox)).values.toList().map((e)=> MovieModel.fromJson(e)).toList();
+  Future<List<MovieModel>> getSavedMovies(String movieType,) async {
+    Map<String, dynamic> savedMovies = (await database.readData(dbName: HiveBoxConstants.moviesBox,key: movieType,defaultValue: {}));
+    return savedMovies.values.toList().map((e)=> MovieModel.fromJson(e)).toList();
   }
 
   Future<void> toggleBookmark(MovieModel movie) async {
